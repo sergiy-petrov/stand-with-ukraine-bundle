@@ -34,4 +34,4 @@ jobs:
                   dependency-versions: ${{ matrix.dependency-versions }}
 
             - name: Run PHPUnit tests
-              run: ./vendor/bin/simple-phpunit
+              run: phpunit
