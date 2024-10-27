@@ -27,6 +27,12 @@ jobs:
             - name: Validate composer.json and composer.lock
               run: composer validate --strict
 
+            - name: "Determine Symfony PHPUnit version"
+              run: |
+                if [[ "${{ matrix.php-version }}" < "8.4" ]]; then
+                  echo "SYMFONY_PHPUNIT_VERSION=9.5" >> $GITHUB_ENV
+                fi
+
             - name: Install Composer dependencies
               uses: ramsey/composer-install@v2
               with:
